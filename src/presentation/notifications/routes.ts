@@ -12,6 +12,7 @@ export class NotificationRoutes {
     const todoController = new NotificationsController();
 
     router.get('/', todoController.sendNotifications );
+    router.get('/fly/:id', todoController.getFly );
 
 
     return router;
