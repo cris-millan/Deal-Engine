@@ -10,7 +10,7 @@ export class GetFlyUseCase {
     constructor() {}
 
     async execute(data: any): Promise<any> {
-        data.fly_number = 104;
+        // data.fly_number = 104;
         const filePath = path.join(BASE_PATH, 'data', 'dataset.csv'); // Path to the CSV file
         const redisAdapter = new RedisAdapter();
 
@@ -25,8 +25,7 @@ export class GetFlyUseCase {
             });
 
             // Create a set to store unique pairs of latitude and longitude
-            console.log(data.flight_num);
-            const fly_data: any = resultado.data.find((row: any) => row.flight_num == 104);
+            const fly_data: any = resultado.data.find((row: any) => row.flight_num == data.fly_number);
 
             if (!fly_data) {
                 return {status: "error"};
@@ -52,7 +51,6 @@ export class GetFlyUseCase {
                 }
 
                 // Log the destination data and send email notification
-                console.log(destinationData);
                 console.log('Sending email notification...');
 
                  // Return the unique pairs as an array

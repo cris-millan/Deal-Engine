@@ -17,7 +17,7 @@ export class NotificationsController {
   };
 
   async getFly( req: Request, res: Response ) {
-    const response = await getFlyUsecase.execute([])
+    const response = await getFlyUsecase.execute({fly_number: req.params.id})
     return res.json( response );
   };
 
